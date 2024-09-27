@@ -1,0 +1,23 @@
+{
+  "name": "playwrightproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "test creation": "playwright test web/tests/loginTests.spec.ts --ui" ,
+    "test with Annotation": "playwright test web/tests/loginTests.spec.ts --grep @smoke" 
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.47.1",
+    "@types/node": "^22.5.5",
+    "@typescript-eslint/eslint-plugin": "^8.6.0",
+    "@typescript-eslint/parser": "^8.6.0",
+    "eslint": "^9.11.0",
+    "eslint-plugin-playwright": "^1.6.2",
+    "typescript": "^5.6.2"
+  }
+}
