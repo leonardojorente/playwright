@@ -1,24 +1,30 @@
 name: Playwright Tests
+#Github action Components:
+#Github EVENTS:  represents the activity that triggers reaction
 on:
   push:
-    branches: [ main, master ]
-  pull_request:
-    branches: [ main, master ]
+    branches: [ main ] #branchs where it will trigger
+#Github JOBS: a set of steps running in sequence to complety a task, each job runs on its own runner. jobs run in paralell except if you use
+# use the action "needs", in this case, it will execute in the sequel of the job specified in the front of "needs" action   
 jobs:
-  test:
-    timeout-minutes: 60
-    runs-on: ubuntu-latest
+  job1: #name of the job
+    timeout-minutes: 60 #how long it will run before stops to execute the job
+    runs-on: ubuntu-latest # System where it will be executed
+    #GIhub STEPS: a github action or a script that will run on t he runner. Steps are executed in order
+    #Runner is a machine that execute the job in a workflow
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
       with:
-        node-version: lts/*
+        node-version: lts/* #it will setup the latest version of node
+        
     - name: Install dependencies
       run: npm ci
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
+
     - name: Run Playwright tests
-      run: npx playwright test
+      run: npx playwright test web/tests/loginTests.spec.ts --grep @smoke
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
