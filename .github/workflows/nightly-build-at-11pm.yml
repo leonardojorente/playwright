@@ -1,5 +1,5 @@
 #Github WORKFLOW: The whle yml file
-name: Playwright Tests
+name: nightly-build-at-11pm
 #Github action Components:
 #Github EVENTS:  represents the activity that triggers reaction
 on:
