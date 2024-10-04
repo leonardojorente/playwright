@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",
-    "test creation": "playwright test web/tests/loginTests.spec.ts --ui" ,
-    "test with Annotation": "playwright test web/tests/loginTests.spec.ts --grep @smoke" 
+    "test creation": "playwright test web/tests/loginTests.spec.ts --ui",
+    "test with Annotation": "playwright test web/tests/loginTests.spec.ts --grep @smoke",
+    "test specific project": "playwright test web/tests/loginTests.spec.ts --grep @smoke --project=local"
   },
   "keywords": [],
   "author": "",
@@ -19,5 +20,8 @@
     "eslint": "^9.11.0",
     "eslint-plugin-playwright": "^1.6.2",
     "typescript": "^5.6.2"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5"
   }
 }
