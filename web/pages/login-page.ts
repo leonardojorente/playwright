@@ -12,7 +12,7 @@ export class LoginPage{
         this.loginBtn = page.getByRole('button', {name: 'Entrar'});
     }
 
-    async insertEmail(email){
+    async insertEmail(email: string){
         await this.emailInput.fill(email);
     }
 
