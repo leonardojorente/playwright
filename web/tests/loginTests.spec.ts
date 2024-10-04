@@ -6,7 +6,6 @@ import { TopMenuComponent } from '../pages/components/top-menu-component';
 test('TC01 Success Login @smoke @regression', {tag: ['@regression', '@smoke']},  async ({ page }) => {
   const loginPage = new LoginPage(page);
   await page.goto('https://barrigareact.wcaquino.me/');
-  console.log(process.env.ENV)
   await loginPage.insertEmail(process.env.USER)
   await loginPage.insertPassword(process.env.PASSWORD)
   await loginPage.clickSignInButton()
