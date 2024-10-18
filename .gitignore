@@ -1,6 +1,8 @@
 node_modules/
 /test-results/
+/.auth/
 /playwright-report/
+/performance-results/
 /blob-report/
 /playwright/.cache/
 .env

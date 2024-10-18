@@ -1,0 +1,10 @@
+{
+    "TOAST_COMPONENT":{
+        "LOGOUT_MESSAGE":"Até Logo!",
+        "LOGIN_MESSAGE":"Bem vindo, leonardo Jorente!"
+    },
+    "TOP_MENU_COMPONENT":{
+        "SETTINGS_OPTION_LOGOUT":"Sair",
+        "SETTINGS_OPTION_ACCOUNTS":"Contas"
+    }
+}

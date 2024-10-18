@@ -5,9 +5,12 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",
-    "test creation": "playwright test web/tests/loginTests.spec.ts --ui",
-    "test with Annotation": "playwright test web/tests/loginTests.spec.ts --grep @smoke",
-    "test specific project": "playwright test web/tests/loginTests.spec.ts --grep @smoke --project=local"
+    "test creation": "playwright test tests/ui/web-tests/login-tests.spec.ts --ui",
+    "test debug": "playwright test tests/ui/web-tests/login-tests.spec.ts --debug",
+    "test with Annotation": "playwright test tests/loginTests.spec.ts --grep @smoke",
+    "test specific project": "playwright test tests/login-tests.spec.ts --grep @smoke",
+    "E2E tests": "playwright test tests/ui/web-tests --project=E2ETests",
+    "API tests": "playwright test tests/api/api-tests --project=APITests"
   },
   "keywords": [],
   "author": "",
@@ -17,8 +20,10 @@
     "@types/node": "^22.5.5",
     "@typescript-eslint/eslint-plugin": "^8.6.0",
     "@typescript-eslint/parser": "^8.6.0",
+    "ajv": "^8.17.1",
     "eslint": "^9.11.0",
     "eslint-plugin-playwright": "^1.6.2",
+    "playwright-performance": "^1.0.3",
     "typescript": "^5.6.2"
   },
   "dependencies": {

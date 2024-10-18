@@ -13,10 +13,11 @@ dotenv.config({
   override:true 
 });
 
-/**
- * See https://playwright.dev/docs/test-configuration.
- */
+export const STORAGE_STATE = path.join(__dirname, '.auth/user.json');
 export default defineConfig({
+  globalSetup: require.resolve('./tests/support/global-setup.ts'),
+  globalTeardown: require.resolve('./tests/support/global-teardown.ts'),
+  
   //testDir: './tests',
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -37,24 +38,52 @@ export default defineConfig({
     trace: 'retain-on-first-failure',
     screenshot:'only-on-failure',
     headless: true
+    
   },
 
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'local',
-      use: { ...devices['Desktop Chrome'] },
+      name: 'setup',
+      testMatch: '**/*.setup.ts',
+      use: {       
+        ...devices['Desktop Chrome']
+      }
+    },
+    {
+      name: 'setupAPI',
+      testMatch: '**/*.setupByAPI.ts',
+      use: {       
+        ...devices['Desktop Chrome']
+      },
+      teardown: 'teardownAPI'
+    },
+    {
+      name: 'teardownAPI',
+      testMatch: '**/*.teardown\.ts',
+    },
+    {
+      name: 'APITests',
+      dependencies: ['setupAPI'],
+      use: { 
+        ...devices['Desktop Chrome'],
+        screenshot:'only-on-failure', 
+        headless: false,
+        trace: 'retain-on-first-failure'      }
     },
 
     {
-      name: 'ci-github-actions',
-      use: { ...devices['Desktop Firefox'] },
-    },
+      name: 'E2ETests',
+      dependencies: ['setup', 'setupAPI'],
+      use: {       
+        ...devices['Desktop Chrome'],
+        screenshot:'only-on-failure', 
+        headless: false,
+        trace: 'retain-on-first-failure',
+        storageState: STORAGE_STATE      }
+    }
 
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
+   
 
     /* Test against mobile viewports. */
     // {

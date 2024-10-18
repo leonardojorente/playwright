@@ -28,7 +28,7 @@ jobs:
       run: npx playwright install --with-deps
 
     - name: Run Playwright tests
-      run: npx playwright test web/tests/loginTests.spec.ts --grep @smoke
+      run: npx playwright test tests/ui/web-tests --project=E2ETests
       env:
         HOME: /root
     - uses: actions/upload-artifact@v4

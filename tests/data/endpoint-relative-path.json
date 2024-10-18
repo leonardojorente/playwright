@@ -1,0 +1,6 @@
+{
+ "ACCOUNT":"/contas",
+ "LOGIN":"/signin",
+ "RESET":"/reset",  
+ "TRANSACTION":"/transacoes"
+}

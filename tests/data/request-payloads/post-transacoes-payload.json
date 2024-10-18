@@ -1,0 +1,10 @@
+{
+  "tipo": "REC",
+  "data_transacao": "17/10/2024",
+  "data_pagamento": "17/10/2024",
+  "descricao": "description",
+  "valor": "1",
+  "envolvido": "interested",
+  "conta_id": 2301036,
+  "status": false
+}

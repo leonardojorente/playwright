@@ -13,10 +13,12 @@ export class LoginPage{
     }
 
     async insertEmail(email: string){
+        await this.emailInput.clear()
         await this.emailInput.fill(email);
     }
 
-    async insertPassword(password){
+    async insertPassword(password: string){
+        await this.passwordInput.clear()
         await this.passwordInput.fill(password);
     }
 
@@ -24,7 +26,7 @@ export class LoginPage{
         await this.loginBtn.click();
     }
 
-    async loginWebApp(email, password){
+    async loginWebApp(email: string, password: string){
         await this.insertEmail(email)
         await this.insertPassword(password)
         await this.clickSignInButton()
