@@ -7,14 +7,6 @@ on:
   push:
     branches: [ main ] #branchs where it will trigger
 
-env:
-  USER:  ${{ secrets.USER }}
-  PASSWORD: ${{ secrets.PASSWORD }}
-  USER_ADM:  ${{ secrets.USER_ADM }}
-  PASSWORD_ADM: ${{ secrets.PASSWORD_ADM }}  
-  BASE_URL_WEB: ${{ secrets.BASE_URL_WEB }} 
-  BASE_URL_API: ${{ secrets.BASE_URL_API }}
-
 #Github JOBS: a set of steps running in sequence to complety a task, each job runs on its own runner. jobs run in paralell except if you use
 # use the action "needs", in this case, it will execute in the sequel of the job specified in the front of "needs" action   
 jobs:
@@ -47,6 +39,10 @@ jobs:
         HOME: /root
         USER:  ${{ secrets.USER }}
         PASSWORD: ${{ secrets.PASSWORD }}
+        USER_ADM:  ${{ secrets.USER_ADM }}
+        PASSWORD_ADM: ${{ secrets.PASSWORD_ADM }}  
+        BASE_URL_WEB: ${{ secrets.BASE_URL_WEB }} 
+        BASE_URL_API: ${{ secrets.BASE_URL_API }}
     - uses: actions/upload-artifact@v4
       if: always()
       with:
