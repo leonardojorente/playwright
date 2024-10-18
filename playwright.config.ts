@@ -68,7 +68,7 @@ export default defineConfig({
       use: { 
         ...devices['Desktop Chrome'],
         screenshot:'only-on-failure', 
-        headless: false,
+        headless: true,
         trace: 'retain-on-first-failure'      }
     },
 
@@ -78,7 +78,7 @@ export default defineConfig({
       use: {       
         ...devices['Desktop Chrome'],
         screenshot:'only-on-failure', 
-        headless: false,
+        headless: true,
         trace: 'retain-on-first-failure',
         storageState: STORAGE_STATE      }
     }
