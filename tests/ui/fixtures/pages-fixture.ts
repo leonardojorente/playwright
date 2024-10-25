@@ -3,6 +3,7 @@ import { LoginPage } from '../pages/login-page';
 import { AccountPage } from '../pages/account-page';
 import { ToastComponent } from '../pages/components/toast-component';
 import { TopMenuComponent } from '../pages/components/top-menu-component';
+import { logConsoleErrorMessages } from '../../support/utils';
 
 type PagesFixtures = {
   loginPage: LoginPage;
@@ -14,6 +15,7 @@ type PagesFixtures = {
 
 export const test = base.extend<PagesFixtures>({
   loginPage: async ({ page }, use) => {
+    logConsoleErrorMessages(page)
     await use(new LoginPage(page));
   },
   appLogin: async ({ page }, use) => {

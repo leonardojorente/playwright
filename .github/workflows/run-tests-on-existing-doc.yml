@@ -34,13 +34,14 @@ jobs:
       run: npx eslint .
 
     - name: Run E2E Playwright tests
-      run: npx playwright test tests/ui/web-tests --project=E2ETests
+      run: playwright test tests/ui/web-tests --project=e2eTestsAsAdm
       env:
         HOME: /root
         USER:  ${{ secrets.USER }}
         PASSWORD: ${{ secrets.PASSWORD }}
         USER_ADM:  ${{ secrets.USER_ADM }}
         PASSWORD_ADM: ${{ secrets.PASSWORD_ADM }}  
+        BASE_URL_WEB_ADM: ${{ secrets.BASE_URL_WEB_ADM }}
         BASE_URL_WEB: ${{ secrets.BASE_URL_WEB }} 
         BASE_URL_API: ${{ secrets.BASE_URL_API }}
     - uses: actions/upload-artifact@v4

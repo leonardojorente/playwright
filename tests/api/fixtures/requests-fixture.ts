@@ -8,6 +8,14 @@ export const test = base.extend<PlaywrightPerformance, PerformanceOptions & Perf
       disableAppendToExistingFile: true,
     }, { scope: 'worker' }],
     worker: [playwrightPerformance.worker, { scope: 'worker', auto: true }]
-  });
+});
+
+export const test2 = base.extend<PlaywrightPerformance, PerformanceOptions & PerformanceWorker>({
+  performance: playwrightPerformance.performance,
+  performanceOptions: [{
+    disableAppendToExistingFile: true,
+  }, { scope: 'worker' }],
+  worker: [playwrightPerformance.worker, { scope: 'worker', auto: true }]
+});
 
 export { expect } from '@playwright/test';

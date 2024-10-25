@@ -13,7 +13,7 @@ dotenv.config({
   override:true 
 });
 
-export const STORAGE_STATE = path.join(__dirname, '.auth/user.json');
+export const STORAGE_STATE_ADM = path.join(__dirname, '.auth/admin.json');
 export default defineConfig({
   globalSetup: require.resolve('./tests/support/global-setup.ts'),
   globalTeardown: require.resolve('./tests/support/global-teardown.ts'),
@@ -43,44 +43,62 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
+    /******************API environment setup*********************************/
     {
-      name: 'setup',
-      testMatch: '**/*.setup.ts',
-      use: {       
-        ...devices['Desktop Chrome']
-      }
-    },
-    {
-      name: 'setupAPI',
-      testMatch: '**/*.setupByAPI.ts',
+      name: 'setupApi',
+      testMatch: '**/*.setup-by-api.ts',
       use: {       
         ...devices['Desktop Chrome']
       },
-      teardown: 'teardownAPI'
+      teardown: 'teardownApi'
     },
     {
-      name: 'teardownAPI',
+      name: 'teardownApi',
       testMatch: '**/*.teardown\.ts',
     },
     {
-      name: 'APITests',
-      dependencies: ['setupAPI'],
+      name: 'apiTests',
+      dependencies: ['setupApi'],
       use: { 
         ...devices['Desktop Chrome'],
         screenshot:'only-on-failure', 
         headless: true,
-        trace: 'retain-on-first-failure'      }
+        trace: 'retain-on-first-failure'    
+      }
     },
-
+    /******************Administration environment setup*********************************/
     {
-      name: 'E2ETests',
-      dependencies: ['setup', 'setupAPI'],
+      name: 'setupAdmEnv',
+      testMatch: '**/*.setup-as-adm.ts',
       use: {       
         ...devices['Desktop Chrome'],
+        baseURL: process.env.BASE_URL_WEB_ADM!
+      }
+    },
+    {
+      name: 'e2eTestsAsAdm',
+      dependencies: ['setupAdmEnv', 'setupApi'],
+      use: {       
+        ...devices['Desktop Chrome'],
+        baseURL: process.env.BASE_URL_WEB_ADM!,
         screenshot:'only-on-failure', 
+        //locale: 'it-IT', //it will effect navigator.language value, Accept-Language request header value
         headless: true,
         trace: 'retain-on-first-failure',
-        storageState: STORAGE_STATE      }
+        launchOptions: {
+          logger: {
+            isEnabled: (name, severity) => name === 'api',
+            log: (name, severity, message, args) => {
+              const severityThreshold = 'info'; // Example threshold to print info, warning and error
+              const severityLevels = ['verbose', 'info', 'warning', 'error'];
+              if (severityLevels.indexOf(severity) >= severityLevels.indexOf(severityThreshold)) { 
+                  console.log(`[${name}: ${severity}] ${message}`);
+              }
+            }
+          }
+        },  
+        storageState: STORAGE_STATE_ADM      
+      }
     }
 
    

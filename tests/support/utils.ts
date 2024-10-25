@@ -8,3 +8,11 @@ export const generateRandomString = (length: number) => {
         
     return result;
 }
+
+// Listen for all console events and handle errors
+export const logConsoleErrorMessages = (page) => {
+    page.on('console', msg => {
+        if (msg.type() === 'error')
+            console.log(`CONSOLE LOG ARROR: "${msg.text()}"`);
+    });
+}

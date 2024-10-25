@@ -4,7 +4,7 @@ import { test } from '../fixtures/pages-fixture';
 import { generateRandomString } from '../../support/utils';
 
 test.beforeEach(async ({ page }) => {
-  await page.goto(process.env.BASE_URL_WEB!);
+  await page.goto('/');
 });
 
 test('TC01 Add New Account', {tag: ['@regression']},  async ({ topMenuComponent, accountPage }) => {
