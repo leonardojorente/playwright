@@ -4,12 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint .",
+    "lint": "eslint tests/ui/ui-tests/*.spec.ts",
     "playwright: ui": "playwright test --ui",
-    "test debug": "playwright test tests/ui/web-tests/login-tests.spec.ts --debug",
+    "test debug": "playwright test tests/ui/ui-tests/login-tests.spec.ts --debug",
     "console log error": "playwright test tests/login-tests.spec.ts --project=e2eTestsAsAdm --grep @error",
     "test specific project": "playwright test tests/login-tests.spec.ts --grep @smoke",
-    "E2E tests": "playwright test tests/ui/web-tests --project=e2eTestsAsAdm",
+    "E2E tests": "playwright test tests/ui/ui-tests --project=e2eTestsAsAdm",
     "API tests": "playwright test tests/api/api-tests --project=apiTests"
   },
   "keywords": [],

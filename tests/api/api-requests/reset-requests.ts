@@ -8,7 +8,7 @@ export class ResetRequests{
         this.request = request;
     }
 
-    async resetApp(){
+    async resetAppData(){
         const response = await this.request.get(`${process.env.BASE_URL_API}${RelativePath.RESET}`,
             {
                 headers:{
