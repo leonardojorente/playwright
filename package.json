@@ -11,7 +11,7 @@
     "test grep": "playwright test tests/ui/ui-tests/login-tests.spec.ts --grep @smoke",
     "E2E tests": "playwright test tests/ui/ui-tests --project=e2eTestsAsAdm",
     "API tests": "playwright test tests/api/api-tests --project=apiTests",
-    "test switch env": "cross-env test_env=example playwright test tests/switch-env-tests.spec.ts --project=simpleProject",
+    "test switch env": "cross-env TEST_ENV=example playwright test tests/switch-env-tests.spec.ts --project=simpleProject",
     "test switch env2": "playwright test tests/switch-env-tests.spec.ts --project=simpleProject"
   },
   "keywords": [],

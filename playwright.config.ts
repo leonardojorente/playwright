@@ -8,7 +8,7 @@ import dotenv from 'dotenv';
 import path from 'path';
 
 //set .env path
-const dotEnvPath = process.env.test_env ? `.env.${process.env.test_env}` : '.env'
+const dotEnvPath = process.env.TEST_ENV ? `.env.${process.env.TEST_ENV}` : '.env'
 // Read from ".env" file.
 dotenv.config({ 
   path: path.resolve(__dirname, dotEnvPath),
