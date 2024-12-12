@@ -7,9 +7,11 @@ import { defineConfig, devices } from '@playwright/test';
 import dotenv from 'dotenv';
 import path from 'path';
 
+//set .env path
+const dotEnvPath = process.env.test_env ? `.env.${process.env.test_env}` : '.env'
 // Read from ".env" file.
 dotenv.config({ 
-  path: path.resolve(__dirname, '.env'),
+  path: path.resolve(__dirname, dotEnvPath),
   override:true 
 });
 
@@ -99,6 +101,18 @@ export default defineConfig({
         },  
         storageState: STORAGE_STATE_ADM      
       }
+    },
+    {
+      name: 'simpleProject',
+      use: {       
+        ...devices['Desktop Chrome'],
+        baseURL: process.env.BASE_URL_WEB_ADM!,
+        screenshot:'only-on-failure', 
+        //locale: 'it-IT', //it will effect navigator.language value, Accept-Language request header value
+        headless: true,
+        trace: 'retain-on-first-failure',
+      }
+      
     }
 
    
