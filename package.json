@@ -8,9 +8,10 @@
     "playwright: ui": "playwright test --ui",
     "test debug": "playwright test tests/ui/ui-tests/login-tests.spec.ts --debug",
     "console log error": "playwright test tests/login-tests.spec.ts --project=e2eTestsAsAdm --grep @error",
-    "test grep": "playwright test tests/ui/ui-tests/login-tests.spec.ts --grep @smoke",
+    "test grep": "playwright test tests/ui/ui-tests/login-tests.spec.ts --project=e2eTestsAsAdm --grep @smoke",
     "E2E tests": "playwright test tests/ui/ui-tests --project=e2eTestsAsAdm",
     "API tests": "playwright test tests/api/api-tests --project=apiTests",
+    "Performance tests": "playwright test tests/api/api-tests/transactions-collection-tests.spec.ts --project=apiTests",
     "test switch env": "cross-env TEST_ENV=example playwright test tests/switch-env-tests.spec.ts --project=simpleProject",
     "test switch env2": "playwright test tests/switch-env-tests.spec.ts --project=simpleProject"
   },
